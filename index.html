@@ -9,56 +9,88 @@
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">QPICK</div>
-            <div class="icons">asfd</div>
-        </header>
-
-        <section>
-            <h2>Наушники</h2>
-            <div class="small-cards">
-                <div class="card">
-                    <img src="./assets/photo/byz58521.png" alt="Apple BYZ S852I">
-                    <div class="card__content">
-                        <div class="card__line">
-                            <h4>Apple BYZ S852I</h4>
-                            <div class="price">
-                                <div class="price-current">2927 ₽</div>
-                                <div class="price-old">3527 ₽</div>
-                            </div>
+    <div class="wrapper">
+        <div class="content">
+            <div class="container">
+                <header>
+                    <div class="logo"><a href="/">QPICK</a></div>
+                    <div class="header__icons">
+                        <div class="header__icon">
+                            <a href="./favorites.html">
+                                <div class="icon__counter">2</div>
+                                <img src="./assets/icons/heart.svg" alt="Heart">
+                            </a>
+                            <div class="icon__bg"></div>
                         </div>
-                        <div class="card__line">
-                            <div class="rating">
-                                <img src="./assets/icons/star.svg" alt="">4.7</div>
-                            <button>Купить</button>
+                        <div class="header__icon">
+                            <a href="./cart.html">
+                                <div class="icon__counter">1</div>
+                                <img src="./assets/icons/Cart.svg" alt="Cart">
+                            </a>
+                            <div class="icon__bg"></div>
                         </div>
                     </div>
-                </div>
+                </header>
+                <section>
+                    <h2>Наушники</h2>
+                    <div class="small-cards">
+
+                        <div class="card">
+                            <img src="./assets/photo/byz58521.png" alt="Apple BYZ S852I">
+                            <div class="card__content">
+                                <div class="card__line">
+                                    <h4><a href="./products/byz58521">Apple BYZ S852I</a></h4>
+                                    <div class="price">
+                                        <div class="price-current">2927 ₽</div>
+                                        <div class="price-old">3527 ₽</div>
+                                    </div>
+                                </div>
+                                <div class="card__line">
+                                    <div class="rating">
+                                        <img src="./assets/icons/star.svg" alt="">4.7</div>
+                                    <button>Купить</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <section>
+                    <h2>Беспроводные наушники</h2>
+                </section>
             </div>
-        </section>
-
-        <section>
-            <h2>Беспроводные наушники</h2>
-        </section>
-
-        <footer>
-            <nav>
-            <div class="logo">QPICK</div>
-                <ul>
-                    <li><a href="">Избранное</a></li>
-                    <li><a href="">Корзина</a></li>
-                    <li><a href="">Контакты</a></li>
-                </ul>
-
-                <div>Условия сервиса</div>
-
-                <div>social icons</div>
-            </nav>
-        </footer>
-
-        <script src="main.js"></script>
+        </div>
+        <div>
+            <div class="container">
+                <footer>
+                    <nav>
+                        <div class="logo"><a href="/">QPICK</a></div>
+                        <ul>
+                            <li><a href="./favorites.html">Избранное</a></li>
+                            <li><a href="./cart.html">Корзина</a></li>
+                            <li><a href="./contacts.html">Контакты</a></li>
+                        </ul>
+                        <div class="services"><a href="">Условия сервиса</a>
+                            <div class="services__line">
+                                <img src="./assets/icons/globe.svg" alt="">
+                                <a href="/" class="services__lang-active">Рус</a>
+                                <a href="/eng/">Eng</a>
+                            </div>
+                        </div>
+                        <div class="footer_soc-icons">
+                            <a href="https://vk.com/bookflow" target="_blank">
+                                <img src="./assets/icons/i-vk.svg" alt="VK"></a>
+                            <a href="https://t.me/javascript_alert" target="_blank">
+                                <img src="./assets/icons/i-tg.svg" alt="Telegram"></a>
+                            <a href="https://www.whatsapp.com/" target="_blank">
+                                <img src="./assets/icons/i-wu.svg" alt="WhatsApp"></a>
+                        </div>
+                    </nav>
+                </footer>
+            </div>
+        </div>
     </div>
+    <script src="main.js"></script>
 </body>
 
 </html>

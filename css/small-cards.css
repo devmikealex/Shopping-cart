@@ -58,6 +58,10 @@
 .rating {
     display: flex;
     align-items: center;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    color: #838383;
 }
 
 .rating img {

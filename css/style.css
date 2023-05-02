@@ -1,4 +1,6 @@
 @import "small-cards.css";
+@import "long-cards.css";
+@import "total-price.css";
 
 :root {
     --hover-color: #ad4200;
@@ -171,6 +173,10 @@ h2 {
     margin-bottom: 20px;
 }
 
+.h2-dark {
+    color: #1C1C27;
+}
+
 .logo {
     font-weight: 700;
     font-size: 25px;
@@ -194,7 +200,7 @@ h2 {
 
 .content {
     flex: 1 1 auto;
-    padding-top: 2rem
+    padding-top: 3rem
 }
 
 .footer_soc-icons {

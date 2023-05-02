@@ -1,11 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QPICK - Корзина</title>
+    <meta name="viewport" content="width=z, initial-scale=1.0">
+    <title>QPICK</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-    
+    <div class="wrapper">
+        <div class="header_wrapper">
+            <header>
+                <div class="logo"><a href="/">QPICK</a></div>
+                <div class="header__icons">
+                    <div class="header__icon">
+                        <a href="./favorites.html">
+                            <div class="icon__counter">2</div>
+                            <img src="./assets/icons/heart.svg" alt="Heart">
+                        </a>
+                        <div class="icon__bg"></div>
+                    </div>
+                    <div class="header__icon">
+                        <a href="./cart.html">
+                            <div id="cart-counter" class="icon__counter">1</div>
+                            <img src="./assets/icons/Cart.svg" alt="Cart">
+                        </a>
+                        <div class="icon__bg"></div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div class="content">
+.
+            <div class="total-price-card">
+                <div class="full-price">
+                    <div class="full-price__title">Итого</div>
+                    <div id="full-price-count" class="full-price__price">₽ 2 927</div>
+                </div>
+                <a class="full-price__btn" href="/payment">Перейти к оформлению</a>
+            </div>
+
+            <div id="output" class="container"></div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <footer>
+                    <nav>
+                        <div class="logo"><a href="/">QPICK</a></div>
+                        <ul>
+                            <li><a href="./favorites.html">Избранное</a></li>
+                            <li><a href="./cart.html">Корзина</a></li>
+                            <li><a href="./contacts.html">Контакты</a></li>
+                        </ul>
+                        <div class="services"><a href="">Условия сервиса</a>
+                            <div class="services__line">
+                                <img src="./assets/icons/globe.svg" alt="">
+                                <a href="/" class="services__lang-active">Рус</a>
+                                <a href="/eng/">Eng</a>
+                            </div>
+                        </div>
+                        <div class="footer_soc-icons">
+                            <a href="https://vk.com/bookflow" target="_blank">
+                                <img src="./assets/icons/i-vk.svg" alt="VK"></a>
+                            <a href="https://t.me/javascript_alert" target="_blank">
+                                <img src="./assets/icons/i-tg.svg" alt="Telegram"></a>
+                            <a href="https://www.whatsapp.com/" target="_blank">
+                                <img src="./assets/icons/i-wu.svg" alt="WhatsApp"></a>
+                        </div>
+                    </nav>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/main.js" type="module"></script>
 </body>
+
 </html>

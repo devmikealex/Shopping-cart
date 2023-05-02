@@ -1,0 +1,44 @@
+.total-price-card {
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    /* min-height: 10px; */
+    max-width: 348px;
+}
+
+.full-price {
+    padding: 22px;
+    padding-bottom: 0px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.full-price__title {
+    text-transform: uppercase;
+}
+
+.full-price__btn {
+    display: block;
+    /* margin-top: 1rem; */
+    padding: 22px;
+    margin-top: 20px;
+    background: #101010;
+    width: 100%;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    text-align: center;
+    color: white;
+}
+
+.full-price__btn:hover {
+    background: #3a3a3a;
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,117 @@
+.long-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* .card-l * {
+    border: 1px solid red;
+} */
+
+.card-l {
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    min-height: 220px;
+    max-width: 630px;
+    padding: 20px;
+}
+
+.card-l__image {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-l__image img {
+    display: block;
+    width: 100%;
+}
+
+.cart-l__line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-l__content {
+    flex-grow: 1;
+    align-self: center;
+    padding: 0 24px;
+}
+
+.card-l__content h4 {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 21px;
+    color: #1C1C27;
+}
+
+.card-l__content .price-current {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: #AAAAAA;
+    margin-top: 12px;
+}
+
+.cart-l__line button {
+    align-self: flex-start;
+}
+
+.delete-btn:hover {
+    filter:brightness(1.5);
+}
+
+.card-l button {
+    border: none;
+    outline: none;
+    background-color: unset;
+    cursor: pointer;
+}
+
+.card-l__toolbar {
+    display: flex;
+    align-items:center;
+    margin-top: 0.8rem;
+}
+
+.round-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #FFCE7F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.round-button:hover {
+    background-color: var(--hilight-color);
+}
+
+.card-counter{
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    /* margin: 0 1rem; */
+    width: 50px;
+    text-align: center;
+}
+
+.toolbar-space {
+    flex: 1 1;
+}
+
+.card-full-price{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: #1C1C27;
+}

@@ -12,18 +12,31 @@ const cartCounter = document.querySelector('#cart-counter')
 
 initCart()
 
-switch (window.location.pathname) {
-    case '/':
-    case '/index.html':
-        initMainPage()
-        document.title = 'QPICK - Products'
-        break
-    case '/cart.html':
-        document.title = 'QPICK - Cart'
-        initCartPage()
-        break
-    default:
-        break
+// switch (window.location.pathname) {
+//     case '/':
+//     case '/index.html':
+//         console.log('Главная страница');
+//         initMainPage()
+//         document.title = 'QPICK - Products'
+//         break
+//     case '/cart.html':
+//         console.log('Корзина');
+//         document.title = 'QPICK - Cart'
+//         initCartPage()
+//         break
+//     default:
+//         console.error('Необработанный адрес!');
+//         break
+// }
+
+if (window.location.pathname.includes('/cart.html')) {
+    console.log('Корзина');
+    document.title = 'QPICK - Cart'
+    initCartPage()
+} else {
+    console.log('Главная страница');
+    document.title = 'QPICK - Products'
+    initMainPage()
 }
 
 // ----------

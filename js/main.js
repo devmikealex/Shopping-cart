@@ -9,32 +9,16 @@ export let cart = []
 
 const output = document.querySelector('#output')
 const cartCounter = document.querySelector('#cart-counter')
+const tip = document.querySelector('#tip')
 
 initCart()
 
-// switch (window.location.pathname) {
-//     case '/':
-//     case '/index.html':
-//         console.log('Главная страница');
-//         initMainPage()
-//         document.title = 'QPICK - Products'
-//         break
-//     case '/cart.html':
-//         console.log('Корзина');
-//         document.title = 'QPICK - Cart'
-//         initCartPage()
-//         break
-//     default:
-//         console.error('Необработанный адрес!');
-//         break
-// }
-
 if (window.location.pathname.includes('/cart.html')) {
-    console.log('Корзина');
+    console.log('Корзина')
     document.title = 'QPICK - Cart'
     initCartPage()
 } else {
-    console.log('Главная страница');
+    console.log('Главная страница')
     document.title = 'QPICK - Products'
     initMainPage()
 }
@@ -65,7 +49,7 @@ export function initCartPage() {
 
     const fullPrice = createFullPrice()
     output.prepend(fullPrice)
-    document.querySelector('#output').style = "position: relative;"
+    document.querySelector('#output').style = 'position: relative;'
 
     newFullPrice()
     updateCount()
@@ -121,7 +105,8 @@ export function newFullPrice() {
     cart.forEach((product) => {
         price += product.price * product.count
     })
-    document.querySelector('#full-price-count').textContent = '₽ ' + price.toLocaleString()
+    document.querySelector('#full-price-count').textContent =
+        '₽ ' + price.toLocaleString()
 }
 
 export function updateStore() {
@@ -139,7 +124,20 @@ export function buy(obj) {
     if (!check) {
         cart.push({ ...obj, count: 1 })
         updateStore()
+        ShowTip('Товар добавлен в корзину:<br>' + obj.title)
     } else {
         console.warn('Найден в корзине')
+        ShowTip('Товар уже в корзине:<br>' + obj.title)
     }
+}
+
+let timerTip
+
+function ShowTip(text) {
+    tip.classList.remove('displaynone')
+    tip.innerHTML = text
+    clearTimeout(timerTip)
+    timerTip = setTimeout(() => {
+        tip.classList.add('displaynone')
+    }, 4000)
 }

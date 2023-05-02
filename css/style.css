@@ -38,6 +38,8 @@ a {
     width: 100%;
     top: 0;
     left: 0;
+    padding: 0 1rem;
+    z-index: 2000;
 }
 
 header {
@@ -50,8 +52,8 @@ header {
     background-color: var(--pagebg-color);
     /* background-color: rgb(243, 187, 187); */
     width: 100%;
-    max-width: 1110px;
-    margin: 0 auto;
+    /* max-width: 1110px; */
+    /* margin: 0 auto; */
     /* left: 50%; */
     /* transform: translateX(-50%); */
     /* z-index: 9999; */

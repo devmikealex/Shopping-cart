@@ -1,13 +1,16 @@
 import mainProducts from './products.js'
+import { createCard } from './createCard.js'
+import { createLongCard } from './createLongCard.js'
+import createFullPrice from './createFullPrice.js'
 
-const STORAGE = 'CART_TEST'
+export const STORAGE = 'CART_TEST'
 
-let cart = []
+export let cart = []
 
 const output = document.querySelector('#output')
 const cartCounter = document.querySelector('#cart-counter')
 
-initCounter()
+initCart()
 
 switch (window.location.pathname) {
     case '/':
@@ -25,7 +28,7 @@ switch (window.location.pathname) {
 
 // ----------
 
-function initCartPage() {
+export function initCartPage() {
     const newSection = document.createElement('section')
     const html = `
 <h2 class="h2-dark">Корзина</h2>
@@ -33,97 +36,29 @@ function initCartPage() {
     newSection.insertAdjacentHTML('afterbegin', html)
 
     const longCards = newSection.querySelector('.long-cards')
-    cart.forEach((product) => {
-        // console.log(product)
-        const testCard = createLongCard(product)
-        longCards.append(testCard)
-    })
+
+    if (cart.length) {
+        cart.forEach((product) => {
+            // console.log(product)
+            const testCard = createLongCard(product)
+            longCards.append(testCard)
+        })
+    } else {
+        longCards.append('Корзина пуста')
+    }
 
     output.innerHTML = ''
     output.appendChild(newSection)
+
+    const fullPrice = createFullPrice()
+    output.prepend(fullPrice)
+    document.querySelector('#output').style = "position: relative;"
+
     newFullPrice()
     updateCount()
 }
 
-function createLongCard(obj) {
-    const { title, id, price, count } = obj
-
-    const card = document.createElement('div')
-    card.classList = 'card-l'
-
-    const html = `
-    <div class="cart-l__line">
-        <div class="card-l__image">
-            <img src="./assets/photo/${id}.png" alt="${title}">
-        </div>
-        <div class="card-l__content">
-            <h4><a href="./products/${id}">${title}</a></h4>
-            <div class="price-current">${price} ₽</div>
-        </div>
-        <button id="${id}-delete" class="delete-btn"><img src="./assets/icons/del.svg" alt="Delete"></button>
-    </div>
-    <div class="card-l__toolbar">
-        <div id="${id}-minus" class="round-button">
-            <img src="./assets/icons/minus.svg" alt="Minus">
-        </div>
-        <div id="${id}-cart-counter" class="card-counter">${count}</div>
-        <div id="${id}-plus" class="round-button">
-            <img src="./assets/icons/plus.svg" alt="Plus">
-        </div>
-        <div class="toolbar-space"></div>
-        <div id="${id}-card-full-price" class="card-full-price">9999 ₽</div>
-    </div>`
-
-    card.insertAdjacentHTML('afterbegin', html)
-
-    newCardPrice(id, count * price)
-
-    card.querySelector(`#${id}-delete`).addEventListener('click', () => {
-        console.log('Удалить:', id)
-        cart = cart.filter((product) => product.id !== id)
-        initCartPage()
-        newFullPrice()
-        // TODO Update store
-    })
-
-    card.querySelector(`#${id}-plus`).addEventListener('click', () => {
-        console.log('Прибавить:', id)
-        const index = cart.findIndex((product) => product.id === id)
-        ++cart[index].count
-        card.querySelector(`#${id}-cart-counter`).textContent = cart[index].count
-        newCardPrice(id, cart[index].count * price)
-        newFullPrice()
-        // TODO Update store
-    })
-
-    card.querySelector(`#${id}-minus`).addEventListener('click', () => {
-        console.log('Уменьшить:', id)
-        const index = cart.findIndex((product) => product.id === id)
-        if (cart[index].count > 1) {
-            --cart[index].count
-            card.querySelector(`#${id}-cart-counter`).textContent = cart[index].count
-            newCardPrice(id, cart[index].count * price)
-            newFullPrice()
-        }
-        // TODO Update store
-    })
-
-    function newCardPrice(id, price) {
-        card.querySelector(`#${id}-card-full-price`).textContent = price + ' ₽'
-    }
-
-    return card
-}
-
-function newFullPrice() {
-    let price = 0
-    cart.forEach((product) => {
-        price += product.price * product.count
-    })
-    document.querySelector('#full-price-count').textContent = '₽ ' + price
-}
-
-function initMainPage() {
+export function initMainPage() {
     mainProducts.forEach((category) => {
         console.log('Категория: ' + category.category)
 
@@ -145,38 +80,7 @@ function initMainPage() {
     })
 }
 
-function createCard(obj) {
-    const { title, id, price, priceOld, rating } = obj
-
-    const card = document.createElement('div')
-    card.classList = 'card'
-
-    const html = `
-<div class="card__image"><img src="./assets/photo/${id}.png" alt="${title}"></div>
-<div class="card__content">
-    <div class="card__line">
-        <h4><a href="./products/${id}">${title}</a></h4>
-        <div class="price">
-            <div class="price-current">${price} ₽</div>
-            <div class="price-old">${priceOld} ₽</div>
-        </div>
-    </div>
-    <div class="card__line">
-        <div class="rating">
-            <img src="./assets/icons/star.svg" alt="">${rating}</div>
-        <button>Купить</button>
-    </div>
-</div>`
-
-    card.insertAdjacentHTML('afterbegin', html)
-    card.querySelector('button').addEventListener('click', () => buy(obj))
-
-    if (!priceOld) card.querySelector('.price-old').remove()
-
-    return card
-}
-
-function initCounter() {
+function initCart() {
     const data = sessionStorage.getItem(STORAGE)
     if (data) {
         cart = JSON.parse(data)
@@ -184,7 +88,35 @@ function initCounter() {
     updateCount()
 }
 
-function buy(obj) {
+export function deleteFromCart(id) {
+    console.log('Удалить:', id)
+    cart = cart.filter((product) => product.id !== id)
+    updateStore()
+    initCartPage()
+    // newFullPrice()
+}
+
+export function updateCount() {
+    console.log('Обновление счетчика корзины:', cart.length)
+    if (!cart.length) cartCounter.classList.add('displaynone')
+    else cartCounter.classList.remove('displaynone')
+    cartCounter.textContent = cart.length
+}
+
+export function newFullPrice() {
+    let price = 0
+    cart.forEach((product) => {
+        price += product.price * product.count
+    })
+    document.querySelector('#full-price-count').textContent = '₽ ' + price.toLocaleString()
+}
+
+export function updateStore() {
+    sessionStorage.setItem(STORAGE, JSON.stringify(cart))
+    updateCount()
+}
+
+export function buy(obj) {
     console.log('Добавить в корзину:', obj.title, obj.id)
 
     const check = cart.some((product) => {
@@ -193,16 +125,8 @@ function buy(obj) {
 
     if (!check) {
         cart.push({ ...obj, count: 1 })
-        sessionStorage.setItem(STORAGE, JSON.stringify(cart))
-        updateCount()
+        updateStore()
     } else {
         console.warn('Найден в корзине')
     }
-}
-
-function updateCount() {
-    console.log('Обновление счетчика корзины:', cart.length)
-    if (!cart.length) cartCounter.classList.add('displaynone')
-    else cartCounter.classList.remove('displaynone')
-    cartCounter.textContent = cart.length
 }

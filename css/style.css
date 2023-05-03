@@ -106,7 +106,7 @@ header {
 }
 
 .displaynone {
-    display: none;
+    display: none !important;
 }
 
 footer {
@@ -236,4 +236,13 @@ h2 {
     bottom: 4rem;
     left: 50%;
     transform: translateX(-50%);
+
+    transition: opacity 0.3s, bottom 0.3s;
+    opacity: 1;
+    display: block;
+}
+
+.card-tip-none {
+    opacity: 0;
+    bottom: 10px;
 }

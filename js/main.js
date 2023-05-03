@@ -133,15 +133,23 @@ export function buy(obj) {
     }
 }
 
-let timerTip
+let timerTip1
 
 function ShowTip(text) {
-    tip.classList.remove('displaynone')
     tip.innerHTML = text
-    clearTimeout(timerTip)
-    timerTip = setTimeout(() => {
-        tip.classList.add('displaynone')
-    }, 4000)
+    tip.classList.remove('displaynone')
+    clearTimeout(timerTip1)
+
+    setTimeout(() => {
+        tip.classList.remove('card-tip-none')
+    }, 0)
+
+    timerTip1 = setTimeout(() => {
+        tip.classList.add('card-tip-none')
+        setTimeout(() => {
+            tip.classList.add('displaynone')
+        }, 400)
+    }, 3000)
 }
 
 function initBuyBtnState() {

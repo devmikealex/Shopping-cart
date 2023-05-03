@@ -112,3 +112,7 @@
 .card button:hover {
     color: var(--hover-color);
 }
+
+.inactive-buy-btn {
+    color: #dddddd !important;
+}

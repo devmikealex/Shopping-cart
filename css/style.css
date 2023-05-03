@@ -1,6 +1,7 @@
 @import "small-cards.css";
 @import "long-cards.css";
 @import "total-price.css";
+@import "media.css";
 
 :root {
     --hover-color: #ad4200;

@@ -19,12 +19,14 @@ export function createCard(obj) {
     <div class="card__line">
         <div class="rating">
             <img src="./assets/icons/star.svg" alt="">${rating}</div>
-        <button>Купить</button>
+        <button id="${id}-buy">Купить</button>
     </div>
 </div>`
 
     card.insertAdjacentHTML('afterbegin', html)
-    card.querySelector('button').addEventListener('click', () => buy(obj))
+    card.querySelector('button').addEventListener('click', (e) => {
+        e.target.classList.add('inactive-buy-btn')
+        buy(obj)})
 
     if (!priceOld) card.querySelector('.price-old').remove()
 

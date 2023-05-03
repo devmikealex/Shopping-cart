@@ -21,6 +21,7 @@ if (window.location.pathname.includes('/cart.html')) {
     console.log('Главная страница')
     document.title = 'QPICK - Products'
     initMainPage()
+    initBuyBtnState()
 }
 
 // ----------
@@ -50,6 +51,7 @@ export function initCartPage() {
     const fullPrice = createFullPrice()
     output.prepend(fullPrice)
     document.querySelector('#output').style = 'position: relative;'
+    document.querySelector('#output').classList.add('cart-output')
 
     newFullPrice()
     updateCount()
@@ -140,4 +142,14 @@ function ShowTip(text) {
     timerTip = setTimeout(() => {
         tip.classList.add('displaynone')
     }, 4000)
+}
+
+function initBuyBtnState() {
+    const a = [...document.querySelectorAll('button[id$="-buy"]')]
+    const res = a.filter((button) => {
+        return cart.find((product) => button.id === product.id + '-buy')
+    })
+    res.forEach((button) => {
+        button.classList.add('inactive-buy-btn')
+    })
 }

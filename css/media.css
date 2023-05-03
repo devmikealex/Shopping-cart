@@ -1,0 +1,41 @@
+@media (max-width: 699px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center !important;
+    }
+
+    nav ul {
+        text-align: center;
+    }
+}
+
+@media (max-width: 762px) {
+    .small-cards {
+        justify-content: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 838px) {
+    .card-l {
+        max-width: none;
+        margin-right: 0;
+    }
+
+    .total-price-card {
+        position: static;
+        max-width: none;
+        order: 100;
+    }
+
+    /* #output.container { */
+    .cart-output {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
